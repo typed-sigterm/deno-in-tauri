@@ -2,12 +2,17 @@
   "version": "4",
   "specifiers": {
     "npm:@deno/shim-deno@~0.19.2": "0.19.2",
+    "npm:@guolao/vue-monaco-editor@^1.5.4": "1.5.4_monaco-editor@0.52.0_vue@3.5.13",
+    "npm:@iconify-prerendered/vue-codicon@~0.28.1732952009": "0.28.1732952009_vue@3.5.13",
     "npm:@tauri-apps/api@^2.1.1": "2.1.1",
     "npm:@tauri-apps/cli@^2.1.0": "2.1.0",
     "npm:@tauri-apps/plugin-shell@^2.0.1": "2.0.1",
     "npm:@tsconfig/deno@^1.0.11": "1.0.11",
     "npm:@typed-sigterm/eslint-config@^1.4.0": "1.4.0_@antfu+eslint-config@3.9.2__eslint@9.15.0__@typescript-eslint+parser@8.15.0___eslint@9.15.0__vue-eslint-parser@9.4.3___eslint@9.15.0__@typescript-eslint+eslint-plugin@8.15.0___@typescript-eslint+parser@8.15.0____eslint@9.15.0___eslint@9.15.0",
     "npm:@vitejs/plugin-vue@^5.2.1": "5.2.1_vite@6.0.1_vue@3.5.13",
+    "npm:@vscode-elements/elements@^1.9.0": "1.9.0",
+    "npm:monaco-editor@0.52": "0.52.0",
+    "npm:sweetalert@^2.1.2": "2.1.2",
     "npm:vite@^6.0.1": "6.0.1",
     "npm:vue-tsc@^2.1.10": "2.1.10_typescript@5.7.2",
     "npm:vue@^3.5.13": "3.5.13"
@@ -275,6 +280,15 @@
         "levn"
       ]
     },
+    "@guolao/vue-monaco-editor@1.5.4_monaco-editor@0.52.0_vue@3.5.13": {
+      "integrity": "sha512-eyBAqxJeDpV4mZYZSpNvh3xUgKCld5eEe0dBtjJhsy2+L0MB6PYFZ/FbPHNwskgp2RoIpfn1DLrIhXXE3lVbwQ==",
+      "dependencies": [
+        "@monaco-editor/loader",
+        "monaco-editor",
+        "vue",
+        "vue-demi"
+      ]
+    },
     "@humanfs/core@0.19.1": {
       "integrity": "sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA=="
     },
@@ -294,8 +308,30 @@
     "@humanwhocodes/retry@0.4.1": {
       "integrity": "sha512-c7hNEllBlenFTHBky65mhq8WD2kbN9Q6gk0bTk8lSBvc554jpXSkST1iePudpt7+A/AQvuHs9EMqjHDXMY1lrA=="
     },
+    "@iconify-prerendered/vue-codicon@0.28.1732952009_vue@3.5.13": {
+      "integrity": "sha512-uYAzjNNz1PLz7F72U/jgrlGyAvg0fZwLEuyqtolG5hrGZvwwGdbFEGbCTAXbdPMwYGNyobqXW6NHlKH6G64i1w==",
+      "dependencies": [
+        "vue"
+      ]
+    },
     "@jridgewell/sourcemap-codec@1.5.0": {
       "integrity": "sha512-gv3ZRaISU3fjPAgNsriBRqGWQL6quFx04YMPW/zD8XMLsU32mhCCbfbO6KZFLjvYpCZ8zyDEgqsgf+PwPaM7GQ=="
+    },
+    "@lit-labs/ssr-dom-shim@1.2.1": {
+      "integrity": "sha512-wx4aBmgeGvFmOKucFKY+8VFJSYZxs9poN3SDNQFF6lT6NrQUnHiPB2PWz2sc4ieEcAaYYzN+1uWahEeTq2aRIQ=="
+    },
+    "@lit/reactive-element@2.0.4": {
+      "integrity": "sha512-GFn91inaUa2oHLak8awSIigYz0cU0Payr1rcFsrkf5OJ5eSPxElyZfKh0f2p9FsTiZWXQdWGJeXZICEfXXYSXQ==",
+      "dependencies": [
+        "@lit-labs/ssr-dom-shim"
+      ]
+    },
+    "@monaco-editor/loader@1.4.0_monaco-editor@0.52.0": {
+      "integrity": "sha512-00ioBig0x642hytVspPl7DbQyaSWRaolYie/UFNjoTdvoKPzo6xrXLhTk9ixgIKcLH5b5vDOjVNiGyY+uDCUlg==",
+      "dependencies": [
+        "monaco-editor",
+        "state-local"
+      ]
     },
     "@nodelib/fs.scandir@2.1.5": {
       "integrity": "sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==",
@@ -469,6 +505,9 @@
     "@types/normalize-package-data@2.4.4": {
       "integrity": "sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA=="
     },
+    "@types/trusted-types@2.0.7": {
+      "integrity": "sha512-ScaPdn1dQczgbl0QFTeTOmVHFULt394XJgOQNoyVhZ6r2vLnMLJfBPd53SB52T/3G36VI1/g2MZaX0cwDuXsfw=="
+    },
     "@types/unist@3.0.3": {
       "integrity": "sha512-ko/gIFJRv177XgZsZcBwnqJN5x/Gien8qNOn0D5bQU/zAzVf9Zt3BlcUiLqhV9y4ARk0GbT3tnUiPNgnTXzc/Q=="
     },
@@ -578,6 +617,12 @@
         "@volar/language-core",
         "path-browserify",
         "vscode-uri"
+      ]
+    },
+    "@vscode-elements/elements@1.9.0": {
+      "integrity": "sha512-OjoACdO2elyZ8qVxaClN/JUODejusYC1YVOU6ekHULdWuVoU1nAXRh31Smm89M+Z7UezaAH2mXIP9aZ3q4nnjA==",
+      "dependencies": [
+        "lit"
       ]
     },
     "@vue/compiler-core@3.5.13": {
@@ -882,6 +927,9 @@
     },
     "es-module-lexer@1.5.4": {
       "integrity": "sha512-MVNK56NiMrOwitFB7cqDwq0CQutbw+0BvLshJSse0MUNU+y1FC3bUS/AQg7oUng+/wKrrki7JfmwtVHkVfPLlw=="
+    },
+    "es6-object-assign@1.1.0": {
+      "integrity": "sha512-MEl9uirslVwqQU369iHNWZXsI8yaZYGg/D65aOgZkeyFJwHYSxilf7rQzXKI7DdDuBPrBXbfk3sl9hJhmd5AUw=="
     },
     "esbuild@0.24.0": {
       "integrity": "sha512-FuLPevChGDshgSicjisSooU0cemp/sGXR841D5LHMB7mTVOmsEHcAxaH3irL53+8YDIeVNQEySh4DaYU/iuPqQ==",
@@ -1486,6 +1534,28 @@
     "lines-and-columns@1.2.4": {
       "integrity": "sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg=="
     },
+    "lit-element@4.1.1": {
+      "integrity": "sha512-HO9Tkkh34QkTeUmEdNYhMT8hzLid7YlMlATSi1q4q17HE5d9mrrEHJ/o8O2D0cMi182zK1F3v7x0PWFjrhXFew==",
+      "dependencies": [
+        "@lit-labs/ssr-dom-shim",
+        "@lit/reactive-element",
+        "lit-html"
+      ]
+    },
+    "lit-html@3.2.1": {
+      "integrity": "sha512-qI/3lziaPMSKsrwlxH/xMgikhQ0EGOX2ICU73Bi/YHFvz2j/yMCIrw4+puF2IpQ4+upd3EWbvnHM9+PnJn48YA==",
+      "dependencies": [
+        "@types/trusted-types"
+      ]
+    },
+    "lit@3.2.1": {
+      "integrity": "sha512-1BBa1E/z0O9ye5fZprPtdqnc0BFzxIxTTOO/tQFmyC/hj1O3jL4TfmLBw0WEwjAokdLwpclkvGgDJwTIh0/22w==",
+      "dependencies": [
+        "@lit/reactive-element",
+        "lit-element",
+        "lit-html"
+      ]
+    },
     "local-pkg@0.5.1": {
       "integrity": "sha512-9rrA30MRRP3gBD3HTGnC6cDFpaE1kVDWxWgqWJUN0RvDNAo+Nz/9GxB+nHOH0ifbVFy0hSA1V6vFDvnx54lTEQ==",
       "dependencies": [
@@ -1910,6 +1980,9 @@
         "ufo"
       ]
     },
+    "monaco-editor@0.52.0": {
+      "integrity": "sha512-OeWhNpABLCeTqubfqLMXGsqf6OmPU6pHM85kF3dhy6kq5hnhuVS1p3VrEW/XhWHc71P2tHyS5JFySD8mgs1crw=="
+    },
     "ms@2.1.3": {
       "integrity": "sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA=="
     },
@@ -2061,6 +2134,9 @@
     },
     "prelude-ls@1.2.1": {
       "integrity": "sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g=="
+    },
+    "promise-polyfill@6.1.0": {
+      "integrity": "sha512-g0LWaH0gFsxovsU7R5LrrhHhWAWiHRnh1GPrhXnPgYsDkIqjRYUYSZEsej/wtleDrz5xVSIDbeKfidztp2XHFQ=="
     },
     "punycode@2.3.1": {
       "integrity": "sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg=="
@@ -2220,6 +2296,9 @@
     "stable-hash@0.0.4": {
       "integrity": "sha512-LjdcbuBeLcdETCrPn9i8AYAZ1eCtu4ECAWtP7UleOiZ9LzVxRzzUZEoZ8zB24nhkQnDWyET0I+3sWokSDS3E7g=="
     },
+    "state-local@1.0.7": {
+      "integrity": "sha512-HTEHMNieakEnoe33shBYcZ7NX83ACUjCu8c40iOGEZsngj9zRnkqS9j1pqQPXwobB0ZcVTk27REb7COQ0UR59w=="
+    },
     "string-width@4.2.3": {
       "integrity": "sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==",
       "dependencies": [
@@ -2251,6 +2330,13 @@
     },
     "supports-preserve-symlinks-flag@1.0.0": {
       "integrity": "sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w=="
+    },
+    "sweetalert@2.1.2": {
+      "integrity": "sha512-iWx7X4anRBNDa/a+AdTmvAzQtkN1+s4j/JJRWlHpYE8Qimkohs8/XnFcWeYHH2lMA8LRCa5tj2d244If3S/hzA==",
+      "dependencies": [
+        "es6-object-assign",
+        "promise-polyfill"
+      ]
     },
     "synckit@0.6.2": {
       "integrity": "sha512-Vhf+bUa//YSTYKseDiiEuQmhGCoIF3CVBhunm3r/DQnYiGT4JssmnKQc44BIyOZRK2pKjXXAgbhfmbeoC9CJpA==",
@@ -2376,6 +2462,12 @@
     "vscode-uri@3.0.8": {
       "integrity": "sha512-AyFQ0EVmsOZOlAnxoFOGOq1SQDWAB7C6aqMGS23svWAllfOaxbuFvcT8D1i8z3Gyn8fraVeZNNmN6e9bxxXkKw=="
     },
+    "vue-demi@0.14.10_vue@3.5.13": {
+      "integrity": "sha512-nMZBOwuzabUO0nLgIcc6rycZEebF6eeUfaiQx9+WSk8e29IbLvPU9feI6tqW4kTo3hvoYAJkMh8n8D0fuISphg==",
+      "dependencies": [
+        "vue"
+      ]
+    },
     "vue-eslint-parser@9.4.3_eslint@9.15.0": {
       "integrity": "sha512-2rYRLWlIpaiN8xbPiDyXZXRgLGOtWxERV7ND5fFAv5qo1D2N9Fu9MNajBNc6o13lZ+24DAWCkQCvj4klgmcITg==",
       "dependencies": [
@@ -2474,12 +2566,17 @@
     "packageJson": {
       "dependencies": [
         "npm:@deno/shim-deno@~0.19.2",
+        "npm:@guolao/vue-monaco-editor@^1.5.4",
+        "npm:@iconify-prerendered/vue-codicon@~0.28.1732952009",
         "npm:@tauri-apps/api@^2.1.1",
         "npm:@tauri-apps/cli@^2.1.0",
         "npm:@tauri-apps/plugin-shell@^2.0.1",
         "npm:@tsconfig/deno@^1.0.11",
         "npm:@typed-sigterm/eslint-config@^1.4.0",
         "npm:@vitejs/plugin-vue@^5.2.1",
+        "npm:@vscode-elements/elements@^1.9.0",
+        "npm:monaco-editor@0.52",
+        "npm:sweetalert@^2.1.2",
         "npm:vite@^6.0.1",
         "npm:vue-tsc@^2.1.10",
         "npm:vue@^3.5.13"

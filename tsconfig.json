@@ -1,7 +1,10 @@
 {
+  "extends": "@tsconfig/deno",
   "compilerOptions": {
-    "types": [
-      "@deno/shim-deno"
-    ]
+    "lib": [
+      "DOM",
+      "ESNext"
+    ],
+    "esModuleInterop": true
   }
 }

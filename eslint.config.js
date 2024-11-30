@@ -6,4 +6,5 @@ export default ts({
   typescript: true,
   vue: true,
   yaml: true,
+  ignores: ['**/target/**'],
 });

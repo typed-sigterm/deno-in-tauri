@@ -1,37 +1,40 @@
 use rustyscript::{
-    deno_core::{anyhow, ResolutionKind, ModuleSpecifier, RequestedModuleType},
+    deno_core::{anyhow, ModuleSpecifier, RequestedModuleType, ResolutionKind},
     module_loader::ImportProvider,
-    Module,
-    Runtime,
-    RuntimeOptions,
+    Runtime, RuntimeOptions, StaticModule,
 };
 
-/// A custom import provider that resolves `module:main` to the provided code.
-/// 
-/// Note: `module:main` can only be resolved once, or it will throw a `TypeError`.
-struct MyImportProvider {
+/// A custom import provider that resolves `script:main` to the provided code.
+///
+/// Note: `script:main` can only be imported once, or it will throw a `TypeError`.
+struct ScriptImportProvider {
     module_source: String,
-    resolved: bool,
+    imported: bool,
+    locked: bool,
+    // After a module is imported, it will be resolved again. So there is [`locked`].
 }
 
-impl MyImportProvider {
+impl ScriptImportProvider {
     fn new(code: String) -> Self {
         Self {
             module_source: code,
-            resolved: false,
+            imported: false,
+            locked: false,
         }
     }
 }
 
-impl ImportProvider for MyImportProvider {
+impl ImportProvider for ScriptImportProvider {
     fn resolve(
         &mut self,
         specifier: &ModuleSpecifier,
         _: &str,
         _: ResolutionKind,
     ) -> Option<Result<ModuleSpecifier, anyhow::Error>> {
-        if !self.resolved && specifier.to_string() == "module:main" {
-            self.resolved = true;
+        if !self.locked && specifier.to_string() == "script:main" {
+            if self.imported {
+                self.locked = true;
+            }
             Some(Ok(specifier.clone()))
         } else {
             None
@@ -45,8 +48,8 @@ impl ImportProvider for MyImportProvider {
         _: bool,
         _: RequestedModuleType,
     ) -> Option<Result<String, anyhow::Error>> {
-        if !self.resolved && specifier.to_string() == "module:main" {
-            self.resolved = true;
+        if !self.imported && specifier.to_string() == "script:main" {
+            self.imported = true;
             Some(Ok(self.module_source.clone()))
         } else {
             None
@@ -56,26 +59,30 @@ impl ImportProvider for MyImportProvider {
 
 #[tauri::command]
 fn execute(code: String) -> Result<String, String> {
-    let wrapper = Module::new(
+    let wrapper = StaticModule::new(
         "<bootstrap>",
         r#"
-        import mod from "module:main";
-        export default () => Deno.inspect(mod());
+        import mod from "script:main";
+        export default () => {
+            if (typeof mod !== 'function') {
+                throw new TypeError("The script must export a function named 'default'");
+            }
+            return Deno.inspect(mod()); // To prettify the output
+        }
         "#,
     );
 
-    let import_provider = MyImportProvider::new(code);
+    let import_provider = ScriptImportProvider::new(code);
     let mut runtime = Runtime::new(RuntimeOptions {
         import_provider: Some(Box::new(import_provider)),
         ..Default::default()
-    }).expect("Failed to create runtime");
+    })
+    .expect("Failed to create runtime");
 
-    match runtime.load_module(&wrapper) {
-        Ok(handle) => {
-            runtime
-                .call_entrypoint::<String>(&handle, &())
-                .map_err(|e| e.to_string())
-        }
+    match runtime.load_module(&wrapper.to_module()) {
+        Ok(handle) => runtime
+            .call_entrypoint::<String>(&handle, &())
+            .map_err(|e| e.to_string()),
         Err(err) => Err(err.to_string()),
     }
 }

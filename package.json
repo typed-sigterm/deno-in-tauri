@@ -10,9 +10,14 @@
   },
   "dependencies": {
     "@deno/shim-deno": "^0.19.2",
+    "@guolao/vue-monaco-editor": "^1.5.4",
+    "@iconify-prerendered/vue-codicon": "^0.28.1732952009",
     "@tauri-apps/api": "^2.1.1",
     "@tauri-apps/plugin-shell": "^2.0.1",
     "@tsconfig/deno": "^1.0.11",
+    "@vscode-elements/elements": "^1.9.0",
+    "monaco-editor": "^0.52.0",
+    "sweetalert": "^2.1.2",
     "vue": "^3.5.13"
   },
   "devDependencies": {
