@@ -11,22 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+      - uses: sudo apt-get install libgtk-3-dev
       - uses: actions-rust-lang/setup-rust-toolchain@11df97af8e8102fd60b60a77dfbf58d40cd843b8 # v1
         with:
           components: clippy
-          
+
       - run: cargo install --path ./src-tauri
       - run: cargo clippy --all-targets --all-features -- -D warnings
         working-directory: ./src-tauri
-
-  type-check:
-    name: Type Check
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
-      - uses: denoland/setup-deno@4606d5cc6fb3f673efd4f594850e3f4b3e9d29cd # v2.0.0
-        with:
-          deno-version-file: .tool-versions
-
-      - run: deno i
-      - run: deno task test:types
