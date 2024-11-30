@@ -3,10 +3,11 @@
   "private": true,
   "scripts": {
     "build": "tauri build",
-    "build:web": "vue-tsc --noEmit && vite build",
+    "build:web": "vite build",
     "dev": "tauri dev",
     "dev:web": "vite",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "test:types": "vue-tsc --noEmit"
   },
   "dependencies": {
     "@deno/shim-deno": "^0.19.2",
