@@ -38,7 +38,7 @@ jobs:
         with:
           deno-version-file: .tool-versions
 
-      - run: deno i
+      - run: deno i --allow-scripts
       - run: deno task build
 
       - uses: tauri-apps/tauri-action@8c3e0753aa015d00d03631d6d4f64ad59489251d # v0.5

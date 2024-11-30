@@ -22,13 +22,13 @@ jobs:
       - run: cargo install --path ./src-tauri
       - run: cargo fix
         working-directory: ./src-tauri
-      - run: cargo fix -- --check
+      - run: cargo fmt -- --check
         working-directory: ./src-tauri
 
       - uses: denoland/setup-deno@4606d5cc6fb3f673efd4f594850e3f4b3e9d29cd # v2.0.0
         with:
           deno-version-file: .tool-versions
-      - run: deno i
+      - run: deno i --allow-scripts
       - run: deno task lint --fix
 
       - uses: autofix-ci/action@2891949f3779a1cafafae1523058501de3d4e944 # v1.3.1
