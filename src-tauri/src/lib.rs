@@ -1,19 +1,24 @@
-use rustyscript::deno_core::{anyhow, ResolutionKind, ModuleSpecifier, RequestedModuleType};
-use rustyscript::{module_loader::ImportProvider, Module, Runtime, RuntimeOptions};
+use rustyscript::{
+    deno_core::{anyhow, ResolutionKind, ModuleSpecifier, RequestedModuleType},
+    module_loader::ImportProvider,
+    Module,
+    Runtime,
+    RuntimeOptions,
+};
 
-fn module_not_found(specifier: &ModuleSpecifier) -> anyhow::Error {
-    anyhow::anyhow!("Module not found \"{}\"", specifier.to_string())
-}
-
-#[derive(Default)]
+/// A custom import provider that resolves `module:main` to the provided code.
+/// 
+/// Note: `module:main` can only be resolved once, or it will throw a `TypeError`.
 struct MyImportProvider {
-    module_source: String
+    module_source: String,
+    resolved: bool,
 }
 
 impl MyImportProvider {
     fn new(code: String) -> Self {
         Self {
-            module_source: code
+            module_source: code,
+            resolved: false,
         }
     }
 }
@@ -22,14 +27,12 @@ impl ImportProvider for MyImportProvider {
     fn resolve(
         &mut self,
         specifier: &ModuleSpecifier,
-        _referrer: &str,
-        _kind: ResolutionKind,
+        _: &str,
+        _: ResolutionKind,
     ) -> Option<Result<ModuleSpecifier, anyhow::Error>> {
-        if specifier.scheme() == "module" {
-            match specifier.path() {
-                "main" => Some(Ok(specifier.clone())),
-                _ => Some(Err(module_not_found(specifier))),
-            }
+        if !self.resolved && specifier.to_string() == "module:main" {
+            self.resolved = true;
+            Some(Ok(specifier.clone()))
         } else {
             None
         }
@@ -38,15 +41,13 @@ impl ImportProvider for MyImportProvider {
     fn import(
         &mut self,
         specifier: &ModuleSpecifier,
-        _referrer: Option<&ModuleSpecifier>,
-        _is_dyn_import: bool,
-        _requested_module_type: RequestedModuleType,
+        _: Option<&ModuleSpecifier>,
+        _: bool,
+        _: RequestedModuleType,
     ) -> Option<Result<String, anyhow::Error>> {
-        if specifier.scheme() == "module" {
-            match specifier.path() {
-                "main" => Some(Ok(self.module_source.clone())),
-                _ => Some(Err(module_not_found(specifier))),
-            }
+        if !self.resolved && specifier.to_string() == "module:main" {
+            self.resolved = true;
+            Some(Ok(self.module_source.clone()))
         } else {
             None
         }

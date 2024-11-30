@@ -18,3 +18,4 @@ tauri-build = { version = "2", features = [] }
 tauri = { version = "2", features = [] }
 tauri-plugin-shell = "2"
 rustyscript = "0.10.0"
+serde_json = "1.0.133"

@@ -893,6 +893,7 @@ name = "deno-in-tauri"
 version = "0.0.0"
 dependencies = [
  "rustyscript",
+ "serde_json",
  "tauri",
  "tauri-build",
  "tauri-plugin-shell",
