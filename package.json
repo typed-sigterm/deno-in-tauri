@@ -1,0 +1,25 @@
+{
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "tauri build",
+    "build:web": "vue-tsc --noEmit && vite build",
+    "dev": "tauri dev",
+    "dev:web": "vite",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@deno/shim-deno": "^0.19.2",
+    "@tauri-apps/api": "^2.1.1",
+    "@tauri-apps/plugin-shell": "^2.0.1",
+    "@tsconfig/deno": "^1.0.11",
+    "vue": "^3.5.13"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.1.0",
+    "@typed-sigterm/eslint-config": "^1.4.0",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "vite": "^6.0.1",
+    "vue-tsc": "^2.1.10"
+  }
+}

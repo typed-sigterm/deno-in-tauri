@@ -1,0 +1,20 @@
+[package]
+name = "deno-in-tauri"
+version = "0.0.0"
+edition = "2021"
+
+[lib]
+name = "deno_in_tauri_lib"
+crate-type = [
+  "staticlib",
+  "cdylib",
+  "rlib"
+]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-shell = "2"
+rustyscript = "0.10.0"
