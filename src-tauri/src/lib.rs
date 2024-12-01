@@ -4,9 +4,9 @@ use rustyscript::{
     Runtime, RuntimeOptions, StaticModule,
 };
 
-/// A custom import provider that resolves `script:main` to the provided code.
+/// A custom import provider that resolves `script://main.ts` to the provided code.
 ///
-/// Note: `script:main` can only be imported once, or it will throw a `TypeError`.
+/// Note: `script://main.ts` can only be imported once, or it will throw a `TypeError`.
 struct ScriptImportProvider {
     module_source: String,
     imported: bool,
@@ -31,7 +31,7 @@ impl ImportProvider for ScriptImportProvider {
         _: &str,
         _: ResolutionKind,
     ) -> Option<Result<ModuleSpecifier, anyhow::Error>> {
-        if !self.locked && specifier.to_string() == "script:main" {
+        if !self.locked && specifier.to_string() == "script://main.ts" {
             if self.imported {
                 self.locked = true;
             }
@@ -48,7 +48,7 @@ impl ImportProvider for ScriptImportProvider {
         _: bool,
         _: RequestedModuleType,
     ) -> Option<Result<String, anyhow::Error>> {
-        if !self.imported && specifier.to_string() == "script:main" {
+        if !self.imported && specifier.to_string() == "script://main.ts" {
             self.imported = true;
             Some(Ok(self.module_source.clone()))
         } else {
@@ -62,7 +62,7 @@ fn execute(code: String) -> Result<String, String> {
     let wrapper = StaticModule::new(
         "<bootstrap>",
         r#"
-        import mod from "script:main";
+        import mod from "script://main.ts";
         export default () => {
             if (typeof mod !== 'function') {
                 throw new TypeError("The script must export a function named 'default'");
