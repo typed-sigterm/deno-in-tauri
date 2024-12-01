@@ -1,5 +1,5 @@
 import type { Plugin } from 'vue';
-import { install } from '@guolao/vue-monaco-editor';
+import { install, loader } from '@guolao/vue-monaco-editor';
 import * as Monaco from 'monaco-editor';
 import EditorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker';
 import TsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker';
@@ -12,6 +12,8 @@ export function monaco(): Plugin {
       return new EditorWorker();
     },
   };
+
+  loader.config({ monaco: Monaco });
 
   const tsCompilerOptions: Parameters<typeof Monaco.languages.typescript.typescriptDefaults.setCompilerOptions>[0] = {
     strict: true,
