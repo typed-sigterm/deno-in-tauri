@@ -15,6 +15,7 @@ crate-type = [
 tauri-build = { version = "2", features = [] }
 
 [dependencies]
+deno_ast = "0.46"
 tauri = { version = "2", features = [] }
 tauri-plugin-shell = "2"
 rustyscript = "0.11"
