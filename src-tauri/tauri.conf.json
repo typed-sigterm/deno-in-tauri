@@ -3,7 +3,7 @@
   "productName": "Deno in Tauri",
   "mainBinaryName": "deno-in-tauri",
   "version": "0.1.1",
-  "identifier": "deno-in-tauri.by-ts.top",
+  "identifier": "top.by-ts.deno-in-tauri",
   "build": {
     "beforeDevCommand": "deno task dev:web",
     "devUrl": "http://localhost:7208",
@@ -31,6 +31,7 @@
       "icons/128x128@2x.png",
       "icons/icon.icns",
       "icons/icon.ico"
-    ]
+    ],
+    "publisher": "Typed SIGTERM"
   }
 }
