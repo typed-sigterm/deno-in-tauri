@@ -11,21 +11,21 @@
   },
   "dependencies": {
     "@deno/shim-deno": "^0.19.2",
-    "@guolao/vue-monaco-editor": "^1.5.4",
-    "@iconify-prerendered/vue-codicon": "^0.28.1732952009",
-    "@tauri-apps/api": "^2.1.1",
-    "@tauri-apps/plugin-shell": "^2.0.1",
+    "@guolao/vue-monaco-editor": "^1.5.5",
+    "@iconify-prerendered/vue-codicon": "^0.28.1753246500",
+    "@tauri-apps/api": "^2.8.0",
+    "@tauri-apps/plugin-shell": "^2.3.1",
     "@tsconfig/deno": "^1.0.11",
-    "@vscode-elements/elements": "^1.9.0",
-    "monaco-editor": "^0.52.0",
+    "@vscode-elements/elements": "^2.3.1",
+    "monaco-editor": "^0.53.0",
     "sweetalert": "^2.1.2",
-    "vue": "^3.5.13"
+    "vue": "^3.5.22"
   },
   "devDependencies": {
-    "@tauri-apps/cli": "^2.1.0",
-    "@typed-sigterm/eslint-config": "^1.4.0",
-    "@vitejs/plugin-vue": "^5.2.1",
-    "vite": "^6.0.1",
-    "vue-tsc": "^2.1.10"
+    "@tauri-apps/cli": "^2.8.4",
+    "@typed-sigterm/eslint-config": "^1.6.0",
+    "@vitejs/plugin-vue": "^6.0.1",
+    "vite": "^7.1.9",
+    "vue-tsc": "^3.1.0"
   }
 }

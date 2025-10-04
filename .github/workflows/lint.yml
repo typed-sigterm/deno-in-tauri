@@ -13,9 +13,9 @@ jobs:
     name: Lint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
       - run: sudo apt install libwebkit2gtk-4.1-dev build-essential curl wget file libssl-dev libgtk-3-dev libayatana-appindicator3-dev librsvg2-dev libsoup-3.0-dev
-      - uses: actions-rust-lang/setup-rust-toolchain@11df97af8e8102fd60b60a77dfbf58d40cd843b8 # v1
+      - uses: actions-rust-lang/setup-rust-toolchain@02be93da58aa71fb456aa9c43b301149248829d8 # v1
         with:
           components: rustfmt
           cache-workspaces: src-tauri -> target
@@ -26,13 +26,13 @@ jobs:
       - run: cargo fmt -- --check
         working-directory: ./src-tauri
 
-      - uses: denoland/setup-deno@4606d5cc6fb3f673efd4f594850e3f4b3e9d29cd # v2.0.0
+      - uses: denoland/setup-deno@e95548e56dfa95d4e1a28d6f422fafe75c4c26fb # v2.0.3
         with:
           deno-version-file: .tool-versions
       - run: deno i --allow-scripts
       - run: deno task lint --fix
 
-      - uses: autofix-ci/action@2891949f3779a1cafafae1523058501de3d4e944 # v1.3.1
+      - uses: autofix-ci/action@635ffb0c9798bd160680f18fd73371e355b85f27# v1.3.2
         if: always()
         with:
           commit-message: 'style: autofix'
