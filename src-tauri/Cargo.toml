@@ -19,9 +19,9 @@ tauri = { version = "2", features = [] }
 tauri-plugin-shell = "2"
 rustyscript = "0.12"
 # https://github.com/rscarson/rustyscript/issues/399
-serde = "1.0.219"
-serde_json = "1.0.120"
-serde_bytes = "0.11.15"
+serde = "=1.0.219"
+serde_json = "=1.0.120"
+serde_bytes = "=0.11.15"
 # For ubuntu -> aarch64-unknown-linux-gnu cross-compilation.
 # If you feel the compilation is too slow, you can remove this dependency,
 # and build aarch64-unknown-linux-gnu target on the matched machine (don't cross-compile)
