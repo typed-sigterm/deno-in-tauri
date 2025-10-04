@@ -977,6 +977,7 @@ dependencies = [
  "openssl",
  "rustyscript",
  "serde",
+ "serde_bytes",
  "serde_json",
  "tauri",
  "tauri-build",
