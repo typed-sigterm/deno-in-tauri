@@ -6,26 +6,26 @@
     "build:web": "vite build",
     "dev": "tauri dev",
     "dev:web": "vite",
-    "lint": "eslint .",
-    "tauri": "tauri"
+    "lint": "eslint ."
   },
   "dependencies": {
     "@deno/shim-deno": "^0.19.2",
-    "@guolao/vue-monaco-editor": "^1.5.5",
+    "@guolao/vue-monaco-editor": "^1.6.0",
     "@iconify-prerendered/vue-codicon": "^0.28.1753246500",
-    "@tauri-apps/api": "^2.8.0",
-    "@tauri-apps/plugin-shell": "^2.3.1",
-    "@tsconfig/deno": "^1.0.11",
-    "@vscode-elements/elements": "^2.3.1",
+    "@tauri-apps/api": "^2.11.1",
+    "@tauri-apps/plugin-shell": "^2.3.5",
+    "@tsconfig/deno": "^1.0.14",
+    "@vscode-elements/elements": "^2.5.1",
     "monaco-editor": "^0.53.0",
     "sweetalert": "^2.1.2",
-    "vue": "^3.5.22"
+    "vue": "^3.5.40"
   },
   "devDependencies": {
-    "@tauri-apps/cli": "^2.8.4",
-    "@typed-sigterm/eslint-config": "^1.6.0",
-    "@vitejs/plugin-vue": "^6.0.1",
-    "vite": "^7.1.9",
-    "vue-tsc": "^3.1.0"
+    "@tauri-apps/cli": "^2.11.4",
+    "@typed-sigterm/eslint-config": "^1.7.1",
+    "@vitejs/plugin-vue": "^6.0.8",
+    "typescript": "^6.0.3",
+    "vite": "^8.1.5",
+    "vue-tsc": "^3.3.7"
   }
 }

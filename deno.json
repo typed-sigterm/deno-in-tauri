@@ -1,5 +1,6 @@
 {
   "lint": {
     "exclude": ["**"]
-  }
+  },
+  "allowScripts": ["npm:vue-demi@0.14.10"]
 }
