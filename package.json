@@ -25,6 +25,7 @@
     "@tauri-apps/cli": "^2.8.4",
     "@typed-sigterm/eslint-config": "^1.6.0",
     "@vitejs/plugin-vue": "^6.0.1",
+    "typescript": "~5.9",
     "vite": "^7.1.9",
     "vue-tsc": "^3.1.0"
   }
