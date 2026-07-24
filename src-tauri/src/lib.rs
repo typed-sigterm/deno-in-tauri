@@ -1,7 +1,7 @@
 use rustyscript::{
-    deno_core::{anyhow, ModuleSpecifier, RequestedModuleType, ResolutionKind},
+    Module, Runtime, RuntimeOptions,
+    deno_core::{ModuleSpecifier, RequestedModuleType, ResolutionKind, error::ModuleLoaderError},
     module_loader::ImportProvider,
-    Runtime, RuntimeOptions, StaticModule,
 };
 
 /// A custom import provider that resolves `script://main.ts` to the provided code.
@@ -30,7 +30,7 @@ impl ImportProvider for ScriptImportProvider {
         specifier: &ModuleSpecifier,
         _: &str,
         _: ResolutionKind,
-    ) -> Option<Result<ModuleSpecifier, anyhow::Error>> {
+    ) -> Option<Result<ModuleSpecifier, ModuleLoaderError>> {
         if !self.locked && specifier.to_string() == "script://main.ts" {
             if self.imported {
                 self.locked = true;
@@ -47,7 +47,7 @@ impl ImportProvider for ScriptImportProvider {
         _: Option<&ModuleSpecifier>,
         _: bool,
         _: RequestedModuleType,
-    ) -> Option<Result<String, anyhow::Error>> {
+    ) -> Option<Result<String, ModuleLoaderError>> {
         if !self.imported && specifier.to_string() == "script://main.ts" {
             self.imported = true;
             Some(Ok(self.module_source.clone()))
@@ -59,7 +59,7 @@ impl ImportProvider for ScriptImportProvider {
 
 #[tauri::command]
 fn execute(code: String) -> Result<String, String> {
-    let wrapper = StaticModule::new(
+    let wrapper = Module::new_static(
         "<bootstrap>",
         r#"
         import mod from "script://main.ts";
@@ -79,7 +79,7 @@ fn execute(code: String) -> Result<String, String> {
     })
     .expect("Failed to create runtime");
 
-    match runtime.load_module(&wrapper.to_module()) {
+    match runtime.load_module(&wrapper) {
         Ok(handle) => runtime
             .call_entrypoint::<String>(&handle, &())
             .map_err(|e| e.to_string()),
